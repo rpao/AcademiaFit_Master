@@ -14,15 +14,17 @@ public class ConverterMaquinario {
 		
 		maquinario.setId(maquinarioVO.getId());
 		maquinario.setNome(maquinarioVO.getNome());
+		
 		return maquinario;
 	}		
 
 	public static MaquinarioVO ConverterMaquinarioParaMaquinarioVO(Maquinario maquinario) {
-		MaquinarioVO maquinarioVO = new MaquinarioVO();	
+		MaquinarioVO maquinarioVO = new MaquinarioVO();
+		
 		maquinarioVO.setId(maquinario.getId());
 		maquinarioVO.setNome(maquinario.getNome());
+		
 		return maquinarioVO;
-
 	}
 
 	public static List<MaquinarioVO> ConverterMaquinaListaParaListaVO (List<Maquinario> listaEntidade){

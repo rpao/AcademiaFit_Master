@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.academiafit.entidade.Exercicio;
+import br.com.academiafit.entidade.Maquinario;
 import br.com.academiafit.vo.ExercicioVO;
+import br.com.academiafit.vo.MaquinarioVO;
 
 public class ConverterExercicio {
 
@@ -12,7 +14,10 @@ public class ConverterExercicio {
 		Exercicio exercicio = new Exercicio();
 		exercicio.setId(exercicioVO.getId());
 		exercicio.setMusculo(exercicioVO.getMusculo());
-		exercicio.setExercicio(exercicio.getExercicio());
+		exercicio.setExercicio(exercicioVO.getExercicio());
+		
+		Maquinario maquinario = ConverterMaquinario.ConverterMaquinarioVoParaMaquinario(exercicioVO.getMaquinario());
+		exercicio.setMaquinario(maquinario);
 			
 		return exercicio;
 	}
@@ -22,6 +27,10 @@ public class ConverterExercicio {
 		exercicioVO.setId(exercicio.getId());
 		exercicioVO.setMusculo(exercicio.getMusculo());
 		exercicioVO.setExercicio(exercicio.getExercicio());
+
+		MaquinarioVO maquinario = ConverterMaquinario.ConverterMaquinarioParaMaquinarioVO(exercicio.getMaquinario());
+		exercicioVO.setMaquinario(maquinario);
+
 		
 		return exercicioVO; 		
 	}

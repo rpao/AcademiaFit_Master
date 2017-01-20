@@ -11,6 +11,7 @@ public class ConverterCliente {
 	public static Cliente ConverterClienteVoParaCliente(ClienteVO clienteVO){
 		
 		Cliente cliente = new Cliente();
+		
 		cliente.setCpf(clienteVO.getCpf());
 		cliente.setNome(clienteVO.getNome());
 		cliente.setDtnascimento(clienteVO.getDtnascimento()); 

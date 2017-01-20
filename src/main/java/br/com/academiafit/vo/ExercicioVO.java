@@ -4,6 +4,7 @@ public class ExercicioVO {
 	private long id;
 	private String exercicio;
 	private String musculo;
+	private MaquinarioVO maquinario;
 	
 	public long getId() {
 		return id;
@@ -22,5 +23,11 @@ public class ExercicioVO {
 	}
 	public void setMusculo(String musculo) {
 		this.musculo = musculo;
+	}
+	public MaquinarioVO getMaquinario() {
+		return maquinario;
+	}
+	public void setMaquinario(MaquinarioVO maquinario) {
+		this.maquinario = maquinario;
 	}
 }
