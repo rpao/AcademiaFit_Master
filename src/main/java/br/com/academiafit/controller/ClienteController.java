@@ -11,63 +11,63 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.academiafit.exception.BusinessException;
 import br.com.academiafit.service.ClienteService;
 import br.com.academiafit.vo.ClienteVO;
-import br.com.academiafit.vo.UsuarioVO;
 
 
-@ManagedBean (name = "clienteMbean")
-@SessionScoped
+@ManagedBean (name = "clienteMbean") //managedBean significa que e a camada controller
+@SessionScoped //nao apaga os dados quando clica em outro botao e sai da pagina
 public class ClienteController extends AbstractController {
 	
-	public static String TELA_LISTAR_TODOS = "/cliente/listarTodos.xhtml";
-	public static String TELA_CADASTRAR = "/cliente/cadastrar_cliente.xhtml";
+	public static String TELA_LISTAR_TODOS = "/cliente/listarTodos.xhtml"; // criando tela para listar todos os clientes incluidos
+	public static String TELA_CADASTRAR = "/cliente/cadastrar_cliente.xhtml"; //criando tela para cadastrar cliente
 	
-	@Autowired
-	private ClienteService clienteService;
+	@Autowired //permissao de acesso a camada service
+	private ClienteService clienteService; // acesso a service 
 	
-	private List<ClienteVO> listaClienteVO;
+	private List<ClienteVO> listaClienteVO; //armazena os dados
 	
-	private ClienteVO cliente = new ClienteVO();
+	private ClienteVO cliente = new ClienteVO(); //variavel que pega os dados da view
 	
 	@PostConstruct
 	private void init() {
-		super.getConfigSpring();
+		super.getConfigSpring();// super serve para consultar a classe pai
 	}
 	
-	public ClienteVO getCliente() {
+	//get e set
+	public ClienteVO getCliente() {//
 		return cliente;
 	}
-	public void setCliente(ClienteVO employee) {
+	public void setCliente(ClienteVO employee) { //
 		this.cliente = cliente;
 	}
 	
-	public List<ClienteVO> getListaClienteVO() {
+	public List<ClienteVO> getListaClienteVO() { //
 		return listaClienteVO;
 	}
 	
-	public String chamarTelaCadastro(){
+	public String chamarTelaCadastro(){ // chama a tela de cadastro
 		return TELA_CADASTRAR;
 	}
 	public String chamarTelaListarTodos(){
-		listaClienteVO = clienteService.listarTodos();
+		listaClienteVO = clienteService.listarTodos(); //
 		return TELA_LISTAR_TODOS;
 	}
 	
 	public String incluir() throws BusinessException{
-		clienteService.incluir(cliente);
+		clienteService.incluir(cliente); // a camada service que inclui
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,null," Cliente incluido com sucesso!"));		
-		return "";
+		return "";  	// getcurrentinstance serve para pega o que esta acontecendo agora  e depois imprime a mensagem
 	}
-	
-	public String excluir(ClienteVO clienteVO) throws BusinessException{		
-		try{
-			clienteService.excluir(clienteVO);
+											//throws serve para permiter que o sistema nao pare por causa de um erro. BusinessException define a execao.
+	public String excluir(ClienteVO clienteVO){		
+		try{                       
+			clienteService.excluir(clienteVO);// a camada service que exclui
 			this.listaClienteVO = clienteService.listarTodos();
 
 		}catch (BusinessException exception){
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,null,exception.getMessage()));
-		}
+		}		// getcurrentinstance serve para pega o que esta acontecendo agora  e depois imprime a mensagem
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,null,"Cliente excluido com sucesso!"));
-		return "";
+		return "";		// getcurrentinstance serve para pega o que esta acontecendo agora  e depois imprime a mensagem
 	}
 	
 }

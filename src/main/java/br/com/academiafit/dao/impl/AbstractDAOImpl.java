@@ -2,7 +2,7 @@ package br.com.academiafit.dao.impl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+// da o objeto do hiberneite
 public class AbstractDAOImpl {
 	@PersistenceContext(unitName="jpa-persistence")
 	private EntityManager entityManager;

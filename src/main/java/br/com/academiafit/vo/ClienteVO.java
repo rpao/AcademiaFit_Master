@@ -3,11 +3,12 @@ package br.com.academiafit.vo;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
+								//
 public class ClienteVO implements Serializable{
-	
+	//
 	private static final long serialVersionUID =1L;
 	
+	//declara as funcoes para fazer o get e set em privado, apenas para ser visto pelo banco
 	private long id;
 	private String cpf;
 	private String nome;
@@ -22,6 +23,7 @@ public class ClienteVO implements Serializable{
 	private List<AvaliacaoFisicaVO> listaAvaliacoes;
 	private List<TreinoVO> listaTreinos;
 	
+	//get e set
 	public long getId() {
 		return id;
 	}

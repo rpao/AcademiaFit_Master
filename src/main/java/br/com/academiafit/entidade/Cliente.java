@@ -14,19 +14,21 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="CLIENTE")
+@Table(name="CLIENTE")// nome da tabela do banco
 public class Cliente extends Pessoa{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "DATACADASTRO")
 	private Date datacadastro;
 	
-	@OneToMany
+	@OneToMany // mapeia um para todo( um cliente tem varias av.) cria no banco cliente_av
 	private List<AvaliacaoFisica> listaAvaliacaoFisica;
 	
-	@OneToMany
+	@OneToMany // mapeia um para todos ( um cliente tem varias listas de treino)
 	private List<Treino> listaTreino;
 
+	
+	//get e set
 	public Date getDatacadastro() {
 		return datacadastro;
 	}
